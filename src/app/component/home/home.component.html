@@ -1,1 +1,39 @@
-<p>home works!</p>
+<div class="wrapper">
+  <p>Recommend you to watch</p>
+  <app-movies-table [rows]="1" [cols]="6" [movies]="movies"></app-movies-table>
+
+  <div *ngIf="authService.isAuth" class="bottom auth clear-fix">
+    <div *ngFor="let movies of [watched, planned]; let i = index"
+         [class.watched-list]="i === 0" [class.planned-list]="i === 1">
+      <a [routerLink]="['/personal', i === 0 ? 'watched' : 'planned']" class="clear-fix header">
+        <span class="left">{{i === 0 ? 'Watched' : 'Planned'}}:</span>
+        <span class="right">{{i === 0 ? watchedCount : plannedCount}}</span>
+      </a>
+      <a *ngFor="let movie of movies" class="clear-fix movies-list"
+         [routerLink]="['/movie', movie.id]">
+        <span class="title left">{{movie.title}}</span>
+        <span class="date right">{{movie.add_date | date:'dd/MM/yy'}}</span>
+      </a>
+      <a *ngIf="maxListSize < (i === 0 ? watchedCount : plannedCount)" class="more"
+         [routerLink]="['personal', i === 0 ? 'watched' : 'planned']">
+        <span>See more...</span>
+      </a>
+    </div>
+  </div>
+
+  <div *ngIf="!authService.isAuth" class="bottom non-auth clear-fix">
+    <div class="signup">
+      <input [(ngModel)]="usernameReg" placeholder="username" type="text">
+      <input [(ngModel)]="email" placeholder="email" type="text">
+      <input [(ngModel)]="passwordReg" placeholder="password" type="password">
+      <input [(ngModel)]="firstName" placeholder="first name" type="text">
+      <input [(ngModel)]="lastName" placeholder="last name" type="text">
+      <button (click)="signUp()">Sign Up</button>
+    </div>
+    <div class="login">
+      <input [(ngModel)]="username" placeholder="username" type="text">
+      <input [(ngModel)]="password" placeholder="password" type="password">
+      <button (click)="logIn()">Log In</button>
+    </div>
+  </div>
+</div>

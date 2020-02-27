@@ -20,7 +20,7 @@ export class AuthService {
     this.isAuth = localStorage.getItem('access_token') !== null;
   }
 
-  public login(username: string, password: string): Observable<void> {
+  public login(username: string, password: string): Observable<TokenResponse> {
     const formData = new FormData();
     formData.append('client_id', environment.clientId);
     formData.append('client_secret', environment.clientSecret);
@@ -34,6 +34,7 @@ export class AuthService {
         response => {
           this.initLocalStorage(response);
           this.isAuth = true;
+          return response;
         }
       )
     );
@@ -44,7 +45,7 @@ export class AuthService {
     this.clearLocalStorage();
   }
 
-  public register(username: string, password: string, email: string,
+  public register(username: string, email: string, password: string,
                   firstName: string, lastName: string) {
     this.clearLocalStorage();
     const formData = new FormData();

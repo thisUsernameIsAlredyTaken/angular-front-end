@@ -1,1 +1,7 @@
-<p>movies-table works!</p>
+<div *ngIf="movies" [style]="{width: cols * 230 - 30 + 'px'}">
+  <div *ngFor="let i of rowsRange" class="movies-row">
+    <div *ngFor="let j of colsRange" class="movie-container">
+      <app-movie-table-cell *ngIf="i * cols + j < movies.length" [movie]="movies[i * cols + j]"></app-movie-table-cell>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+@import "src/styles";
+
+p {
+  height: 45px;
+  margin: 0;
+}
+
+.bottom {
+
+  margin-top: 30px;
+
+  div {
+
+    padding: 10px 5px;
+    background: $input-color;
+    width: 420px;
+    height: 230px;
+    float: left;
+    margin-left: 30px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.bottom.auth {
+
+  .watched-list, .planned-list {
+
+    position: relative;
+
+    a {
+      display: block;
+    }
+
+    a.header {
+      margin-bottom: 21px;
+    }
+
+    a.movies-list {
+
+      margin-bottom: 7px;
+
+      span.title {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 335px;
+      }
+
+      span.date {
+        width: 85px;
+        text-align: right;
+      }
+    }
+
+    a.more {
+      position: absolute;
+      bottom: 10px;
+      width: 420px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      span {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.bottom.non-auth {
+
+  .login {
+
+    button {
+      position: relative;
+      bottom: -120px;
+    }
+  }
+
+  .login, .signup {
+
+    input {
+      width: 408px;
+      margin: 0 auto 10px;
+    }
+
+    button {
+      width: 420px;
+    }
+  }
+}

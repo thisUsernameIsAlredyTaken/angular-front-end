@@ -1,0 +1,39 @@
+$listed-mark-size: 30px;
+
+a {
+
+  text-decoration: none;
+  width: 200px;
+  height: 300px;
+  display: block;
+  position: relative;
+
+  img {
+    width: inherit;
+    height: 260px;
+  }
+
+  span.title {
+    text-align: left;
+    width: inherit;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 18px;
+  }
+
+  span.misc {
+    width: inherit;
+    display: block;
+    font-size: 11px;
+    position: absolute;
+    bottom: 0;
+  }
+
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+

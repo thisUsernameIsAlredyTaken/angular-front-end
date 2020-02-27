@@ -1,1 +1,114 @@
-/* You can add global styles to this file, and also import other style files */
+$bg-color: #2b2b2b;
+$nav-color: #3c3f41;
+$font-color: #a9a9a9;
+$input-color: #323232;
+$input-outline-color: $font-color;
+$button-color: $nav-color;
+$button-hover-color: $input-color;
+$error-color: #c75450;
+
+.clear-fix {
+
+  &:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.wrapper {
+  text-align: left;
+  display: inline-block;
+}
+
+.watched:after, .planned:after {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: 2px solid;
+  border-radius: 30px;
+  line-height: 30px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  vertical-align: center;
+}
+
+.watched:after {
+  content: "✔";
+  background: limegreen;
+  color: white;
+  border-color: white;
+}
+
+.planned:after {
+  content: "+";
+  background-color: white;
+  border-color: indigo;
+  color: indigo;
+  font-size: 1.6em;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: $bg-color;
+
+  * {
+
+    color: $font-color;
+
+    &:focus {
+      outline: $font-color 1px solid;
+      outline-offset: -1px;
+    }
+  }
+
+  input {
+
+    padding: 0 5px;
+    font-size: 18px;
+    height: 28px;
+    background: $input-color;
+    border: $input-color 1px solid;
+    border-bottom-color: $input-outline-color;
+
+    &.error {
+      border-color: $error-color;
+    }
+
+    &:focus {
+      border-color: $input-color;
+    }
+  }
+
+  button {
+
+    height: 30px;
+    border: none;
+    background-color: $button-color;
+    font-size: 18px;
+
+    &:hover, &:disabled {
+      background-color: $button-hover-color;
+    }
+  }
+}

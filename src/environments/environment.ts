@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  userUri: 'http://localhost:5555/r/userservice',
+  movieUri: 'http://localhost:5555/r/movieservice',
+  clientId: 'main-service',
+  clientSecret: '123',
+  navigateAfterLogin: '/home',
+  fallbackImg: 'assets/image/404.png'
 };
 
 /*

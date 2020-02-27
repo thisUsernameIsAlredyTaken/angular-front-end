@@ -1,1 +1,11 @@
-<p>movie-table-cell works!</p>
+<a *ngIf="movie" [routerLink]="['/movie', movie.id]" style="position:relative;">
+  <div [class.watched]="movie.listed === 'watched'"
+       [class.planned]="movie.listed === 'planned'"
+  ></div>
+  <img (error)="movie.pic_uri = fallbackImg" [src]="movie.pic_uri" alt="">
+  <span class="title">{{movie.title}}</span>
+  <span class="misc clear-fix">
+    <span class="type left">{{movie.type}}</span>
+    <span class="year right">{{movie.start_year}}</span>
+  </span>
+</a>

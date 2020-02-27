@@ -1,1 +1,6 @@
-<p>register works!</p>
+<input [(ngModel)]="username" [class.error]="usernameStatus === 'error'" placeholder="username" type="text">
+<input [(ngModel)]="email" [class.error]="emailStatus === 'error'" placeholder="email" type="email">
+<input [(ngModel)]="password" [class.error]="passwordStatus === 'error'" placeholder="password" type="password">
+<input [(ngModel)]="firstName" placeholder="first name" type="text">
+<input [(ngModel)]="lastName" placeholder="last name" type="text">
+<button [disabled]="isReg" (click)="register()">Register</button>

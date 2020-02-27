@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Movie} from '../../model/movie';
+import {WatchedMovie} from '../../model/watched-movie';
+import {PlannedMovie} from '../../model/planned-movie';
+import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-movie-table-cell',
@@ -7,7 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieTableCellComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  public movie: Movie;
+
+  public fallbackImg = 'assets/image/404.png';
+
+  constructor(
+  ) {
+  }
 
   ngOnInit(): void {
   }

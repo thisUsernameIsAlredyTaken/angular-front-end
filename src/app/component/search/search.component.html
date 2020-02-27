@@ -1,1 +1,14 @@
-<p>search works!</p>
+<div class="wrapper">
+  <div class="clear-fix">
+    <div class="page-nav left">
+      <button (click)="prevPage()"><</button>
+      <input (keyup.enter)="toPage(publicPage - 1)" (focusout)="publicPage = currentPage + 1" [(ngModel)]="publicPage" class="page-num" type="number">
+      <button (click)="nextPage()">></button>
+    </div>
+    <div class="search right">
+      <input [(ngModel)]="pattern" (keyup.enter)="search()" class="search-field" type="text">
+      <button (click)="search()">Search</button>
+    </div>
+  </div>
+  <app-movies-table [movies]="movies" [rows]="2" [cols]="6"></app-movies-table>
+</div>

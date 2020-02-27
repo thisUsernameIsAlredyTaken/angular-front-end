@@ -1,1 +1,3 @@
-<p>login works!</p>
+<input [(ngModel)]="username" [class.error]="status === 'error'" placeholder="username" type="text">
+<input [(ngModel)]="password" [class.error]="status === 'error'" placeholder="password" type="password">
+<button [disabled]="isLog" (click)="login()">Login</button>
