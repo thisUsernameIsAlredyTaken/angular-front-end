@@ -15,8 +15,6 @@
         <span>{{movieRating > 7 ? '★' : '☆'}}</span>
         <span>{{movieRating > 8 ? '★' : '☆'}}</span>
         <span>{{movieRating > 9 ? '★' : '☆'}}</span>
-        <!--        <span *ngFor="let i of ratingRange">★</span>-->
-        <!--        <span *ngFor="let i of ratingRange1">☆</span>-->
       </span>
     </div>
     <h1>{{movie.title}}</h1>
@@ -26,38 +24,39 @@
     <span class="genres">Genres: {{movie.genres.split(',').join(', ')}}</span>
     <p class="description">{{movie.description}}</p>
   </div>
-  <div style="display: inline-block;" *ngIf="authService.isAuth" class="add-to-list">
-    <span (click)="clicked = !clicked;">Add to list {{clicked ? '▴' : '▾'}}</span>
-    <div *ngIf="clicked" style="border: 1px solid red">
-      <span (click)="addWatched(); clicked = false;">watched</span><br>
-      <span (click)="addPlanned(); clicked = false;">planned</span><br>
+  <div style="display: inline-block;margin-top: 15px;" *ngIf="authService.isAuth" class="add-to-list">
+    <span style="cursor: pointer; text-decoration: underline; margin-bottom: 7px;" (click)="clicked = !clicked;">Add to list {{clicked ? '▴' : '▾'}}</span>
+    <div *ngIf="clicked">
+      <span [class.underline]="movie.listed === 'watched'" (click)="addWatched();">watched</span><br>
+      <span [class.underline]="movie.listed === 'planned'" (click)="addPlanned(); clicked = false;">planned</span><br>
       <span (click)="deleteListed(); clicked = false;">unwatched</span>
-    </div>
-    <div *ngIf="movie.listed === 'watched' && publicUserScore !== null">
-      <div class="score-container">
-        <span (mouseenter)="publicUserScore = 1" (mouseleave)="publicUserScore = userScore"
-              (click)="patchWatchedScore(1)">{{publicUserScore > 0 ? '★' : '☆'}}</span>
-        <span (mouseenter)="publicUserScore = 2" (mouseleave)="publicUserScore = userScore"
-              (click)="patchWatchedScore(2)">{{publicUserScore > 1 ? '★' : '☆'}}</span>
-        <span (mouseenter)="publicUserScore = 3" (mouseleave)="publicUserScore = userScore"
-              (click)="patchWatchedScore(3)">{{publicUserScore > 2 ? '★' : '☆'}}</span>
-        <span (mouseenter)="publicUserScore = 4" (mouseleave)="publicUserScore = userScore"
-              (click)="patchWatchedScore(4)">{{publicUserScore > 3 ? '★' : '☆'}}</span>
-        <span (mouseenter)="publicUserScore = 5" (mouseleave)="publicUserScore = userScore"
-              (click)="patchWatchedScore(5)">{{publicUserScore > 4 ? '★' : '☆'}}</span>
-        <span (mouseenter)="publicUserScore = 6" (mouseleave)="publicUserScore = userScore"
-              (click)="patchWatchedScore(6)">{{publicUserScore > 5 ? '★' : '☆'}}</span>
-        <span (mouseenter)="publicUserScore = 7" (mouseleave)="publicUserScore = userScore"
-              (click)="patchWatchedScore(7)">{{publicUserScore > 6 ? '★' : '☆'}}</span>
-        <span (mouseenter)="publicUserScore = 8" (mouseleave)="publicUserScore = userScore"
-              (click)="patchWatchedScore(8)">{{publicUserScore > 7 ? '★' : '☆'}}</span>
-        <span (mouseenter)="publicUserScore = 9" (mouseleave)="publicUserScore = userScore"
-              (click)="patchWatchedScore(9)">{{publicUserScore > 8 ? '★' : '☆'}}</span>
-        <span (mouseenter)="publicUserScore = 10" (mouseleave)="publicUserScore = userScore"
-              (click)="patchWatchedScore(10)">{{publicUserScore > 9 ? '★' : '☆'}}</span>
+
+      <div *ngIf="movie.listed === 'watched' && publicUserScore !== null">
+        <div style="font-size: 26px;" class="score-container">
+          <span (mouseenter)="publicUserScore = 1" (mouseleave)="publicUserScore = userScore"
+                (click)="patchWatchedScore(1)">{{publicUserScore > 0 ? '★' : '☆'}}</span>
+          <span (mouseenter)="publicUserScore = 2" (mouseleave)="publicUserScore = userScore"
+                (click)="patchWatchedScore(2)">{{publicUserScore > 1 ? '★' : '☆'}}</span>
+          <span (mouseenter)="publicUserScore = 3" (mouseleave)="publicUserScore = userScore"
+                (click)="patchWatchedScore(3)">{{publicUserScore > 2 ? '★' : '☆'}}</span>
+          <span (mouseenter)="publicUserScore = 4" (mouseleave)="publicUserScore = userScore"
+                (click)="patchWatchedScore(4)">{{publicUserScore > 3 ? '★' : '☆'}}</span>
+          <span (mouseenter)="publicUserScore = 5" (mouseleave)="publicUserScore = userScore"
+                (click)="patchWatchedScore(5)">{{publicUserScore > 4 ? '★' : '☆'}}</span>
+          <span (mouseenter)="publicUserScore = 6" (mouseleave)="publicUserScore = userScore"
+                (click)="patchWatchedScore(6)">{{publicUserScore > 5 ? '★' : '☆'}}</span>
+          <span (mouseenter)="publicUserScore = 7" (mouseleave)="publicUserScore = userScore"
+                (click)="patchWatchedScore(7)">{{publicUserScore > 6 ? '★' : '☆'}}</span>
+          <span (mouseenter)="publicUserScore = 8" (mouseleave)="publicUserScore = userScore"
+                (click)="patchWatchedScore(8)">{{publicUserScore > 7 ? '★' : '☆'}}</span>
+          <span (mouseenter)="publicUserScore = 9" (mouseleave)="publicUserScore = userScore"
+                (click)="patchWatchedScore(9)">{{publicUserScore > 8 ? '★' : '☆'}}</span>
+          <span (mouseenter)="publicUserScore = 10" (mouseleave)="publicUserScore = userScore"
+                (click)="patchWatchedScore(10)">{{publicUserScore > 9 ? '★' : '☆'}}</span>
+        </div>
+        <input [(ngModel)]="message" type="text">
+        <button (click)="patchWatchedMessage(message)">Comment</button>
       </div>
-      <input [(ngModel)]="message" type="text">
-      <button (click)="patchWatchedMessage(message)">Submit</button>
     </div>
   </div>
 

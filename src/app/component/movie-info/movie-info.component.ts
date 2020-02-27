@@ -62,6 +62,9 @@ export class MovieInfoComponent implements OnInit {
     if (this.movie) {
       this.userService.addPlanned(this.movie.id).subscribe(() => {
         this.movie.listed = 'planned';
+        this.message = undefined;
+        this.userScore = undefined;
+        this.publicUserScore = undefined;
       });
     }
   }
@@ -70,6 +73,9 @@ export class MovieInfoComponent implements OnInit {
     if (this.movie) {
       this.userService.deleteListed(this.movie.id).subscribe(() => {
         this.movie.listed = '';
+        this.message = undefined;
+        this.userScore = undefined;
+        this.publicUserScore = undefined;
       });
     }
   }

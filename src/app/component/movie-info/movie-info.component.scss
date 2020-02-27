@@ -9,7 +9,9 @@
     }
 
     span.rating {
+      //text-decoration: none;
       span {
+        //text-decoration: none;
         font-size: 30px;
         display: inline-block;
       }
@@ -28,16 +30,26 @@
   }
 
   span.description {
-    border: 1px red solid;
+    //border: 1px red solid;
     display: block;
     height: 200px;
   }
 }
 
 div.add-to-list {
-  text-decoration: underline;
-  cursor: pointer;
+  //cursor: pointer;
+  div {
+    span {
+      cursor: pointer;
+    }
+  }
+
 }
 
 .score-container {
+  cursor: default;
+  span {
+    text-decoration: none;
+  }
+  text-decoration: none;
 }
