@@ -7,7 +7,6 @@ import {CountResponse} from '../model/count-response';
 import {map} from 'rxjs/operators';
 import {MessageResponse} from '../model/message-response';
 import {AuthService} from './auth.service';
-import {WatchedMovie} from '../model/watched-movie';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +33,8 @@ export class MovieService {
       .pipe(map(response => response.count));
   }
 
-  public findById(id: string): Observable<WatchedMovie> {
-    return this.httpClient.get<WatchedMovie>(`${environment.movieUri}/info/${id}`)
+  public findById(id: string): Observable<Movie> {
+    return this.httpClient.get<Movie>(`${environment.movieUri}/info/${id}`)
       .pipe(
         map(movie => {
           this.addListedInfo(movie);

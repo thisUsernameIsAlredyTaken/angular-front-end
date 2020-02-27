@@ -1,9 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Movie} from '../../model/movie';
-import {WatchedMovie} from '../../model/watched-movie';
-import {PlannedMovie} from '../../model/planned-movie';
 import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../../service/user.service';
 
 @Component({
   selector: 'app-movies-table',

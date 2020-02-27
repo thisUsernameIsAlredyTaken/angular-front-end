@@ -13,6 +13,8 @@ import {SearchComponent} from './component/search/search.component';
 import {HomeComponent} from './component/home/home.component';
 import {TokenInterceptor} from './interceptor/token.interceptor';
 import { MovieInfoComponent } from './component/movie-info/movie-info.component';
+import { PersonalComponent } from './component/personal/personal.component';
+import { PersonalMoviesComponent } from './component/personal-movies/personal-movies.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { MovieInfoComponent } from './component/movie-info/movie-info.component'
     MovieTableCellComponent,
     SearchComponent,
     HomeComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    PersonalComponent,
+    PersonalMoviesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,22 @@
+<div *ngIf="userInfo" class="wrapper">
+  <div class="clear-fix user-info">
+    <img (error)="userInfo.imageUri = fallbackImg" [src]="userInfo.imageUri" alt="">
+    <span class="username">{{userInfo.username}}</span>
+    <span class="misc">{{userInfo.firstName}} {{userInfo.lastName}}
+      / since {{userInfo.registerDate | date:'yyyy'}}</span>
+  </div>
+  <nav>
+    <span>
+      <a routerLink="watched" routerLinkActive="active">Watched</a>
+    </span>
+    <span>
+      <a routerLink="planned" routerLinkActive="active">Planned</a>
+    </span>
+  </nav>
+
+
+  <div class="movies">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

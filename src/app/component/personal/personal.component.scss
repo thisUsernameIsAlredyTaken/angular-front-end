@@ -1,0 +1,46 @@
+.wrapper {
+
+  width: 1350px;
+  display: inline-block;
+  margin-top: 45px;
+
+  .user-info {
+    margin-bottom: 30px;
+  }
+
+  img {
+    width: 250px;
+    height: 250px;
+    float: left;
+    margin-right: 30px;
+  }
+
+  span {
+    display: block;
+  }
+
+  span.username {
+    //display: block;
+    font-size: 28px;
+  }
+
+  span.misc {
+    //display: block;
+  }
+
+  a {
+    text-decoration: none;
+
+    &.active, &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  nav {
+    span {
+      display: block;
+      a {
+      }
+    }
+  }
+}

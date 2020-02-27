@@ -61,8 +61,4 @@ export class SearchComponent implements OnInit, OnDestroy {
   public prevPage(): void {
     this.toPage(this.currentPage - 1);
   }
-
-  log(any) {
-    console.log(any);
-  }
 }

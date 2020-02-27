@@ -5,10 +5,9 @@ import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
 import {CountResponse} from '../model/count-response';
 import {map} from 'rxjs/operators';
-import {WatchedMovie} from '../model/watched-movie';
-import {PlannedMovie} from '../model/planned-movie';
 import {MovieService} from './movie.service';
 import {MessageResponse} from '../model/message-response';
+import {UserInfo} from '../model/user-info';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +20,12 @@ export class UserService {
   ) {
   }
 
-  public getWatchedById(id: string): Observable<WatchedMovie> {
-    return this.httpClient.get<WatchedMovie>(`${environment.userUri}/me/watched/${id}`);
+  public getUserInfo(): Observable<UserInfo> {
+    return this.httpClient.get<UserInfo>(`${environment.userUri}/authenticated/user-info`);
+  }
+
+  public getWatchedById(id: string): Observable<Movie> {
+    return this.httpClient.get<Movie>(`${environment.userUri}/me/watched/${id}`);
   }
 
   public getRecommended(count: number): Observable<Movie[]> {
@@ -30,8 +33,8 @@ export class UserService {
       .pipe(map(movies => this.movieService.addListedInfoAll(movies)));
   }
 
-  public getWatched(page: number, pageSize: number): Observable<WatchedMovie[]> {
-    return this.httpClient.get<WatchedMovie[]>(
+  public getWatched(page: number, pageSize: number): Observable<Movie[]> {
+    return this.httpClient.get<Movie[]>(
       `${environment.userUri}/me/watched?pageSize=${pageSize}&page=${page}`)
       .pipe(map(movies => {
           this.movieService.addListedInfoAll(movies);
@@ -40,8 +43,8 @@ export class UserService {
       );
   }
 
-  public getPlanned(page: number, pageSize: number): Observable<PlannedMovie[]> {
-    return this.httpClient.get<PlannedMovie[]>(
+  public getPlanned(page: number, pageSize: number): Observable<Movie[]> {
+    return this.httpClient.get<Movie[]>(
       `${environment.userUri}/me/planned?pageSize=${pageSize}&page=${page}`)
       .pipe(map(movies => {
           this.movieService.addListedInfoAll(movies);

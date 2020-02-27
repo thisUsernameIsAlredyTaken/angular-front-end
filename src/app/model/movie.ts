@@ -12,4 +12,7 @@ export interface Movie {
   popularity: number;
   pic_uri: string;
   listed?: string;
+  user_score?: number;
+  user_message?: string;
+  add_date?: Date;
 }

@@ -3,11 +3,8 @@ import {Movie} from '../../model/movie';
 import {AuthService} from '../../service/auth.service';
 import {MovieService} from '../../service/movie.service';
 import {UserService} from '../../service/user.service';
-import {WatchedMovie} from '../../model/watched-movie';
-import {PlannedMovie} from '../../model/planned-movie';
 import {Router} from '@angular/router';
 import {environment} from '../../../environments/environment';
-import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -19,8 +16,8 @@ export class HomeComponent implements OnInit {
   public movies: Movie[] = [];
   public watchedCount = 0;
   public plannedCount = 0;
-  public watched: WatchedMovie[] = [];
-  public planned: PlannedMovie[] = [];
+  public watched: Movie[] = [];
+  public planned: Movie[] = [];
   public username = '';
   public password = '';
   public usernameReg = '';
