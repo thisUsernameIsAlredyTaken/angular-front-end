@@ -92,6 +92,14 @@ p {
 
     button {
       width: 420px;
+
+      &:hover {
+        background: $bg-color;
+      }
+
+      &:hover:active, &:active {
+        outline-color: $input-color;
+      }
     }
   }
 }

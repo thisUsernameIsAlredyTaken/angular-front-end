@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from '../../service/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {Movie} from '../../model/movie';
-import {max} from 'rxjs/operators';
 import {Subscription} from 'rxjs';
 
 @Component({
@@ -14,11 +13,11 @@ export class PersonalMoviesComponent implements OnInit, OnDestroy {
 
   private type: string;
   private pageSize = 6;
-  private maxPage = 0;
   private subscription: Subscription;
 
+  public maxPage = 0;
   public movies: Movie[];
-  public publicPage = 0;
+  public publicPage = 1;
   public page = 0;
 
   constructor(
@@ -67,7 +66,7 @@ export class PersonalMoviesComponent implements OnInit, OnDestroy {
             return this.movies = movies;
           });
       }
-      this.publicPage = page;
+      this.publicPage = page + 1;
       this.page = page;
     }
   }

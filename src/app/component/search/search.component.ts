@@ -15,14 +15,14 @@ export class SearchComponent implements OnInit, OnDestroy {
   public pattern = '';
   public publicPage = 1;
   public currentPage = 0;
+  public maxPage = 0;
 
   private pageSize = 12;
   private subscription: Subscription;
-  private maxPage = 9999;
+  private subscription1: Subscription;
 
   constructor(
-    private movieService: MovieService,
-    private activatedRoute: ActivatedRoute
+    private movieService: MovieService
   ) {
   }
 
@@ -34,12 +34,22 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+    if (this.subscription1) {
+      this.subscription1.unsubscribe();
+    }
   }
 
   public search(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+    if (this.subscription1) {
+      this.subscription1.unsubscribe();
+    }
+    this.subscription1 = this.movieService.searchCount(this.pattern).subscribe(count => {
+      this.maxPage = Math.floor((count - 1) / this.pageSize);
+      this.subscription1 = null;
+    });
     this.subscription = this.movieService.search(this.pattern, this.pageSize, this.currentPage).subscribe(movies => {
       this.movies = movies;
       this.subscription = null;

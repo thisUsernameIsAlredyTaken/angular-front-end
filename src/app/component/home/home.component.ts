@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
       () => {
         this.router.navigateByUrl(`${environment.navigateAfterLogin}`);
       }, () => {
-        this.router.navigateByUrl('/login');
+        this.router.navigate(['/login'], {queryParams: {error: true}});
       });
   }
 

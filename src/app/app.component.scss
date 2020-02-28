@@ -5,7 +5,11 @@ nav {
   background-color: $nav-color;
   margin-bottom: 15px;
 
-  a {
+  button {
+    height: 100%;
+  }
+
+  a, button {
 
     width: 150px;
     display: block;

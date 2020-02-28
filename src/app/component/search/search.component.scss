@@ -16,7 +16,27 @@
   }
 
   .page-num {
-    width: 109px;
-    margin: 0 10px;
+    width: 50px;
+    //margin: 0 10px;
+    margin-left: 10px;
+  }
+
+  .of {
+    display: inline-block;
+    //outline: 1px red solid;
+    width: 7px;
+    margin-left: 4px;
+    text-align: center;
+  }
+
+  .max-page {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
+    vertical-align: middle;
+    display: inline-block;
+    width: 47px;
+    margin-right: 10px;
   }
 }

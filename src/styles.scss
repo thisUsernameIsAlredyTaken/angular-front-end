@@ -111,6 +111,12 @@ body {
     background-color: $button-color;
     font-size: 18px;
 
+    &:hover:active, &:active {
+      outline: 3px solid $bg-color;
+      font-size: 15px;
+      outline-offset: -3px;
+    }
+
     &:hover, &:disabled {
       background-color: $button-hover-color;
     }

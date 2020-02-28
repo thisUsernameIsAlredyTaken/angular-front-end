@@ -1,18 +1,25 @@
 <div *ngIf="userInfo" class="wrapper">
   <div class="clear-fix user-info">
     <img (error)="userInfo.imageUri = fallbackImg" [src]="userInfo.imageUri" alt="">
-    <span class="username">{{userInfo.username}}</span>
-    <span class="misc">{{userInfo.firstName}} {{userInfo.lastName}}
-      / since {{userInfo.registerDate | date:'yyyy'}}</span>
+    <div class="username">{{userInfo.username}}</div>
+    <div class="misc">{{userInfo.firstName}} {{userInfo.lastName}}
+      / since {{userInfo.registerDate | date:'yyyy'}}</div>
+    <!--    <div>asdf</div>-->
+    <nav>
+      <div>
+        <a routerLinkActive="active" routerLink="watched" class="clear-fix">
+          <span class="left">Watched:</span>
+          <span class="right">{{watchedCount}}</span>
+        </a>
+      </div>
+      <div>
+        <a routerLinkActive="active" routerLink="planned" class="clear-fix">
+          <span class="left">Planned:</span>
+          <span class="right">{{plannedCount}}</span>
+        </a>
+      </div>
+    </nav>
   </div>
-  <nav>
-    <span>
-      <a routerLink="watched" routerLinkActive="active">Watched</a>
-    </span>
-    <span>
-      <a routerLink="planned" routerLinkActive="active">Planned</a>
-    </span>
-  </nav>
 
 
   <div class="movies">

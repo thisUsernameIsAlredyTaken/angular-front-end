@@ -5,6 +5,7 @@
   margin-top: 45px;
 
   .user-info {
+    position: relative;
     margin-bottom: 30px;
   }
 
@@ -15,31 +16,32 @@
     margin-right: 30px;
   }
 
-  span {
-    display: block;
-  }
-
-  span.username {
+  .username {
     //display: block;
     font-size: 28px;
   }
 
-  span.misc {
+  .misc {
     //display: block;
   }
 
-  a {
-    text-decoration: none;
-
-    &.active, &:hover {
-      text-decoration: underline;
-    }
-  }
-
   nav {
-    span {
-      display: block;
+    position: absolute;
+    bottom: 0;
+    left: 280px;
+    //width: 200px;
+    div {
+      //width: 200px;
       a {
+        text-decoration: none;
+        display: inline-block;
+        width: 200px;
+      }
+
+      a.active, a:hover {
+        span {
+          text-decoration: underline;
+        }
       }
     }
   }

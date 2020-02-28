@@ -1,3 +1,9 @@
-<button (click)="prevPage()"><</button>
-<button (click)="nextPage()">></button>
+<div class="page-nav">
+  <button (click)="prevPage()"><</button>
+  <input (keyup.enter)="toPage(publicPage - 1)" (focusout)="publicPage = page + 1" [(ngModel)]="publicPage"
+         class="page-num" type="number">
+  <span class="of">/</span>
+  <span class="max-page">{{maxPage + 1}}</span>
+  <button (click)="nextPage()">></button>
+</div>
 <app-movies-table [rows]="1" [cols]="6" [movies]="movies"></app-movies-table>
