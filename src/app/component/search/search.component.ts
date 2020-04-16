@@ -3,6 +3,7 @@ import {MovieService} from '../../service/movie.service';
 import {Movie} from '../../model/movie';
 import {ActivatedRoute} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'app-search',
@@ -27,6 +28,10 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.movies = Array(this.pageSize);
+    for (let i = 0; i < this.pageSize; i++) {
+      this.movies[i] = this.movieService.stub;
+    }
     this.search();
   }
 

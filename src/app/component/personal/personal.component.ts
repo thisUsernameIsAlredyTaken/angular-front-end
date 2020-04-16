@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {UserInfo} from '../../model/user-info';
 import {UserService} from '../../service/user.service';
 import {environment} from '../../../environments/environment';
+import {AuthService} from '../../service/auth.service';
+import {Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-personal',
@@ -16,11 +18,17 @@ export class PersonalComponent implements OnInit {
   public plannedCount: number;
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService,
+    private router: Router
   ) {
   }
 
   ngOnInit(): void {
+    if (!this.authService.isAuth) {
+      this.router.navigateByUrl('/login');
+      return;
+    }
     this.userService.getUserInfo().subscribe(userInfo => {
       this.userInfo = userInfo;
     });

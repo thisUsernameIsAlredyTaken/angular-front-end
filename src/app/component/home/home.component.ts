@@ -33,6 +33,10 @@ export class HomeComponent implements OnInit {
     private userService: UserService,
     private router: Router
   ) {
+    this.movies = Array(this.maxListSize);
+    for (let i = 0; i < this.maxListSize; i++) {
+      this.movies[i] = movieService.stub;
+    }
   }
 
   ngOnInit(): void {

@@ -3,6 +3,7 @@ import {UserService} from '../../service/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {Movie} from '../../model/movie';
 import {Subscription} from 'rxjs';
+import {MovieService} from '../../service/movie.service';
 
 @Component({
   selector: 'app-personal-movies',
@@ -22,8 +23,13 @@ export class PersonalMoviesComponent implements OnInit, OnDestroy {
 
   constructor(
     private userService: UserService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private movieService: MovieService
   ) {
+    this.movies = Array(this.pageSize);
+    for (let i = 0; i < this.pageSize; i++) {
+      this.movies[i] = movieService.stub;
+    }
   }
 
   ngOnDestroy(): void {

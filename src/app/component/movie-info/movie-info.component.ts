@@ -31,23 +31,30 @@ export class MovieInfoComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.userService.getListedStatus(id).subscribe(listed => {
+    if (this.authService.isAuth) {
+      this.userService.getListedStatus(id).subscribe(listed => {
+        this.movieService.findById(id).subscribe(movie => {
+          this.movie = movie;
+          this.movieRating = Math.round(movie.rating);
+        });
+        if (listed === 'watched') {
+          this.userService.getWatchedById(id).subscribe((movie) => {
+            if (movie.user_score) {
+              this.publicUserScore = movie.user_score;
+              this.userScore = movie.user_score;
+            }
+            if (movie.user_message) {
+              this.message = movie.user_message;
+            }
+          });
+        }
+      });
+    } else {
       this.movieService.findById(id).subscribe(movie => {
         this.movie = movie;
         this.movieRating = Math.round(movie.rating);
       });
-      if (listed === 'watched') {
-        this.userService.getWatchedById(id).subscribe((movie) => {
-          if (movie.user_score) {
-            this.publicUserScore = movie.user_score;
-            this.userScore = movie.user_score;
-          }
-          if (movie.user_message) {
-            this.message = movie.user_message;
-          }
-        });
-      }
-    });
+    }
   }
 
   public addWatched(): void {

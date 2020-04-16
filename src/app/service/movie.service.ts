@@ -13,6 +13,21 @@ import {AuthService} from './auth.service';
 })
 export class MovieService {
 
+  private fallbackImg = environment.fallbackImg;
+
+  public stub: Movie = {
+    id: '',
+    title: '',
+    type: '',
+    rating: 0,
+    genres: '',
+    pic_uri: this.fallbackImg,
+    description: '',
+    start_year: 0,
+    popularity: 0,
+    runtime: 0
+  };
+
   constructor(
     private httpClient: HttpClient,
     private authService: AuthService
